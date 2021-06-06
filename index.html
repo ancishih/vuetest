@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/index.css">
+    <style>
+        .v-card--reveal {
+        bottom: 0;
+        opacity: 1 !important;
+        position: absolute;
+        width: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-container>HellO
+                    <v-btn
+                    text
+                    @click="dialog = true"
+                    >
+                    TEST
+                    </v-btn>
+                    <v-btn
+                    text
+                    @click="dialog2 = true"
+                    >
+                    TEST2
+                    </v-btn>
+                    <v-btn
+                    text
+                    @click="dialog3 = true"
+                    >
+                    TEST3
+                    </v-btn>
+                    <v-dialog 
+                    v-model="dialog" 
+                    max-width="500px"
+                    >
+                        <v-card>
+                            <div v-html="stuff">
+                            </div>
+                        </v-card>
+                    </v-dialog>
+                    <v-dialog 
+                    v-model="dialog2" 
+                    max-width="500px"
+                    >
+                        <v-card>
+                            <div v-html="stuff2">
+                            </div>
+                        </v-card>
+                    </v-dialog>
+                    <v-dialog 
+                    v-model="dialog3" 
+                    max-width="500px"
+                    class="mx-auto"
+                    >
+                        <v-card>
+                            <v-card-text>
+                                <div>Word of the day</div>
+                                <p class="text-h4 text--primary">el·ee·mos·y·nar·y</p>
+                                <p>adjective</p>
+                            </v-card-text>
+                            <div v-html="stuff2">
+                            </div>
+                            <v-card-actions>
+                                <v-btn
+                                text
+                                color="teal accent-4"
+                                @click="reveal=true"
+                                >
+                                    Learn More
+                                </v-btn>
+                                <v-expand-transition>
+                                    <v-card
+                                    v-if="reveal"
+                                    class="transition-fast-in-fast-out v-card--reveal"
+                                    style="height:100%"
+                                    >
+                                    <p>test</p>
+                                    </v-card>
+                                </v-expand-transition>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            vuetify:new Vuetify(),
+            data:()=>({
+                    dialog:false,
+                    stuff:"<div><strong>Hello World</strong></div>",
+                    dialog2:false,
+                    stuff2:"<div>Hello mother</div>",
+                    dialog3:false,
+                    reveal:false,
+            })
+        })
+    </script>
+</body>
+</html>
